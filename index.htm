@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Common DOM Events Demo</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .box { width: 200px; height: 100px; background: lightgray; margin-bottom: 20px; padding: 10px; }
+    input, select, button { margin: 10px 0; display: block; }
+  </style>
+</head>
+<body>
+
+  <h2>Common DOM Events</h2>
+
+  <div class="box" id="mouseBox">Hover or click me</div>
+
+  <input type="text" id="textInput" placeholder="Type here..." />
+  <select id="selectBox">
+    <option value="">-- Select an option --</option>
+    <option value="JS">JavaScript</option>
+    <option value="HTML">HTML</option>
+    <option value="CSS">CSS</option>
+  </select>
+
+  <form id="sampleForm">
+    <input type="text" placeholder="Form input" />
+    <button type="submit">Submit</button>
+  </form>
+
+  <button id="clickBtn">Click Me</button>
+
+  <script>
+    // 1. Click
+    document.getElementById("clickBtn").addEventListener("click", () => {
+      alert("Button clicked!");
+    });
+
+    // 2. Double click
+    document.getElementById("mouseBox").addEventListener("dblclick", () => {
+      alert("Box double-clicked!");
+    });
+
+    // 3. Mouseover
+    document.getElementById("mouseBox").addEventListener("mouseover", () => {
+      console.log("Mouse is over the box.");
+    });
+
+    // 4. Mouseout
+    document.getElementById("mouseBox").addEventListener("mouseout", () => {
+      console.log("Mouse left the box.");
+    });
+
+    // 5. Keydown
+    document.addEventListener("keydown", (e) => {
+      console.log("Key down:", e.key);
+    });
+
+    // 6. Keyup
+    document.addEventListener("keyup", (e) => {
+      console.log("Key up:", e.key);
+    });
+
+    // 7. Input
+    document.getElementById("textInput").addEventListener("input", (e) => {
+      console.log("Typing:", e.target.value);
+    });
+
+    // 8. Change (on select dropdown)
+    document.getElementById("selectBox").addEventListener("change", (e) => {
+      alert("You selected: " + e.target.value);
+    });
+
+    // 9. Focus and Blur
+    const input = document.getElementById("textInput");
+    input.addEventListener("focus", () => console.log("Input focused"));
+    input.addEventListener("blur", () => {
+        console.log("Input blurred")
+    });
+
+    // 10. Submit
+    document.getElementById("sampleForm").addEventListener("submit", () => {
+     // e.preventDefault(); // prevent page reload
+      alert("Form submitted!");
+    });
+
+    // 11. Window Load
+    window.addEventListener("load", () => {
+      console.log("Window fully loaded");
+    });
+
+    // 12. Window Resize
+    window.addEventListener("resize", () => {
+      console.log("Window resized to", window.innerWidth, "x", window.innerHeight);
+    });
+
+    // 13. Window Scroll
+    window.addEventListener("scroll", () => {
+      console.log("Page is being scrolled.");
+    });
+  </script>
+
+  <!-- Add more content to enable scrolling -->
+  <div style="height: 1000px;"></div>
+
+</body>
+</html>
